@@ -1,55 +1,106 @@
-#export PATH="$HOME/.linuxbrew/bin:$PATH"
-#export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-#export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+#export PATH="$HOME/.unixbraw/bin:$PATH"
+#export MANPATH="$HOME/.unixbraw/share/man:$MANPATH"
+#export INFOPATH="$HOME/.unixbraw/share/info:$INFOPATH"
+#
+#alias =' '
+#alias a=" $ "
+#
+
+
+# LS
 export SLS_OPTIONS='--color=auto -a'
 eval "`dircolors`"
 alias rawless="ls --color=never"
 alias lss="ls $SLS_OPTIONS "
 alias lsl="ls $SLS_OPTIONS -l"
+alias lsaltr="ls -althr $SLS_OPTIONS"
+alias lsk2="ls -altghr $SLS_OPTIONS"
+alias lsk3="lsk2 | grep drw"
+alias lsk="ls -altrgh"
 alias lsttyusb="ls $SLS_OPTIONS /dev/ttyUSB*"
-alias psgpy="ps auxw | grep py"
-alias lsaltr="ls -altrh $SLS_OPTIONS"
-alias lsk2="ls -altgrh $SLS_OPTIONS"
 
-alias dttd="date +%y%m%d_%H%M"
 
-#alias =' '
-#alias a=" $ "
+#
+# Dir ---
+alias mkcdlsk="mkdir -p $1 ; cd $1 | lsk "
+alias cdlsk="cd $1 ; lsk"
+alias mkcd="mkdir $1 ; cd $1 "
 
+
+#
+# CD
+alias ..='cd ..'
+alias ...='cd ../../../'
+alias ....='cd ../../../../'
+alias .....='cd ../../../../'
+alias .4='cd ../../../../'
+alias .5='cd ../../../../..'
+
+
+#
+# ps or grep
+###alias psgpy="ps auxw | grep py"
 alias psgrp="ps auxw | grep $1"
 alias psgpy="ps auxw | grep py"
-alias agi="sudo apt-get install $1"
 
+
+#
+# Gsettings
 alias gsettgrp="gsettings list-recursively | grep $1 "
 alias setgsett="gsettings set $1 "
 alias gsettset="gsettings set $1 "
 
 
-alias spr="sudo"
+#
+# APT 
+###alias spr="sudo"
+alias agi="sudo apt-get install $1"
 alias agd="sudo apt-get update"
 alias agg="sudo apt-get upgrade"
 alias acs="sudo apt-cache search $1"
 alias lsdpkg="sudo dpkg -l"
-alias grpkg="sudo dpkg -l | grep $1 "
-alias mkcdlsr="mkdir -p $1 ; cd $1 | ls "
-alias cdls="cd $1 ; ls"
-alias mkcd="mkdir $1 ; cd $1 "
-alias pkggrp="dpkg -l | grep $1"
+alias grpkg="sudo dpkg -l | grep $1"
+alias pkgrp="sudo dpkg -l | grep $1"
+alias grpacs="sudo apt-cache search $1 | grep $2"
+alias acsgrp="sudo apt-cache search $1 | grep $2"
+
+
+#
+# File stuff
 alias grepcat="cat $1 | grep $2"
 alias strgrp="strings $1 | grep $2"
 alias stringsngrep="strings $1 | grep $2"
 
 
-#date=`date +%Y-%m-%d_%H:%M`
-
+#
+# T00lz
 alias lssceen="screen -ls"
 
-#alias retart="sudo service $1 restart"
+
+#
+# Services
+###alias retart="sudo service $1 restart"
 alias retart="sudo bash /etc/init.d/$1 restart"
 alias tarton="sudo bash /etc/init.d/$1 start"
 alias tartoff="sudo bash /etc/init.d/$1 stop"
 alias istartd="sudo bash /etc/init.d/$1 status"
-alias lsk3="lsk2 | grep drw"
+
+# Service
+alias srvretart="service $1 restart"
+alias srvon="service $1 start"
+alias srvoff="service $1 stop"
+alias srvstate="service $1 status"
+
+# Update-rc.d
+#alias pdtrcd="sudo update-rc.d $1 start"
+alias urcdon="sudo update-rc.d $1 start"
+alias urcdoff="sudo update-rc.d $1 stop"
+alias urcdefault="sudo update-rc.d $1 default"
+alias urcdrm="sudo update-rc.d $1 remove"
 
 
-alias lsb="ls -algtrh"
+#
+# Date Formated
+###date=`date +%Y-%m-%d_%H:%M`
+alias dttd="date +%y%m%d_%H%M"
+
